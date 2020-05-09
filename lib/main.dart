@@ -12,7 +12,6 @@ class ExpensesApp extends StatefulWidget {
   _ExpensesAppState createState() => _ExpensesAppState();
 }
 
-
 class _ExpensesAppState extends State<ExpensesApp> {
   @override
   Widget build(BuildContext context) {
@@ -23,6 +22,28 @@ class _ExpensesAppState extends State<ExpensesApp> {
       ],
       supportedLocales: [const Locale('pt', 'BR')],
       home: MyHomePage(),
+      //utiliza theme para setar cores e fontes de forma global
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amber,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+            title: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+        ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+            title: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -59,6 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _transactions.add(newTransaction);
     });
+
+//fecha o modal que está no topo
+    Navigator.of(context).pop();
   }
 
   _openTransactionFormModal(BuildContext context) {
