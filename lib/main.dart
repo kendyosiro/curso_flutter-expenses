@@ -29,15 +29,19 @@ class _ExpensesAppState extends State<ExpensesApp> {
         accentColor: Colors.amber,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
-              title: TextStyle(
+              headline6: TextStyle(
                 fontFamily: 'OpenSans',
                 fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+              button: TextStyle(
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
-                title: TextStyle(
+                headline6: TextStyle(
                   fontFamily: 'OpenSans',
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -74,6 +78,18 @@ class _MyHomePageState extends State<MyHomePage> {
       value: 211.30,
       date: DateTime.now().subtract(Duration(days: 4)),
     ),
+    Transaction(
+      id: 't3',
+      title: 'Cartao de credito',
+      value: 100211.30,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't4',
+      title: 'Lanche',
+      value: 11.30,
+      date: DateTime.now(),
+    ),
   ];
 
   List<Transaction> get _recentTransactions {
@@ -102,10 +118,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
-        context: context,
-        builder: (_) {
-          return TransactionForm(_addTransaction);
-        });
+      context: context,
+      builder: (_) {
+        return TransactionForm(_addTransaction);
+      },
+    );
   }
 
   @override
